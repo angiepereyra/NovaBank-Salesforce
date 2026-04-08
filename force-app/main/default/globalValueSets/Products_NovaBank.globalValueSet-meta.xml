@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Visa Plata</fullName>
+        <default>false</default>
+        <label>Visa Plata</label>
+    </customValue>
+    <customValue>
+        <fullName>Visa Oro</fullName>
+        <default>false</default>
+        <label>Visa Oro</label>
+    </customValue>
+    <customValue>
+        <fullName>Visa Infinite</fullName>
+        <default>false</default>
+        <label>Visa Infinite</label>
+    </customValue>
+    <masterLabel>Products NovaBank</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

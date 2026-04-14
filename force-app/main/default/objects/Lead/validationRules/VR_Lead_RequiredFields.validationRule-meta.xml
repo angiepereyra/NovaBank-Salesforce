@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Lead_RequiredFields</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  ISPICKVAL(Status, &quot;Converted&quot;),
+  OR(
+    ISBLANK(TEXT(Product__c)),
+    ISBLANK(CreditLine__c),
+    ISBLANK(MonthlyIncome__c),
+    NOT(IsEligible__c)
+  )
+)</errorConditionFormula>
+    <errorMessage>Product, CreditLine, MonthlyIncome and IsEligible=True are required to convert</errorMessage>
+</ValidationRule>

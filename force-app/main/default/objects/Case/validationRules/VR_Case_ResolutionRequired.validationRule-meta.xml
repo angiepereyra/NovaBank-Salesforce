@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Case_ResolutionRequired</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(  ISPICKVAL(Status, &quot;Closed&quot;),  OR(    ISBLANK(InternalNotes__c),    ISBLANK(FinalResolution__c),    ISBLANK(ResolutionDate__c)  ))</errorConditionFormula>
+    <errorMessage>To close this Case, you must complete the Internal Notes, Final Resolution, and Resolution Date fields.</errorMessage>
+</ValidationRule>

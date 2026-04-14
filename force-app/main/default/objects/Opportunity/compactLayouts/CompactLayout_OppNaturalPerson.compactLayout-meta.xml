@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CompactLayout_OppNaturalPerson</fullName>
+    <fields>Name</fields>
+    <fields>StageName</fields>
+    <fields>Amount</fields>
+    <fields>CreditLine__c</fields>
+    <fields>CloseDate</fields>
+    <fields>AccountId</fields>
+    <label>CompactLayout OppNaturalPerson</label>
+</CompactLayout>

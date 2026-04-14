@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CompactLayout_NaturalPerson</fullName>
+    <fields>Name</fields>
+    <fields>NationalId__c</fields>
+    <fields>Segment__c</fields>
+    <fields>RiskProfile__c</fields>
+    <fields>Phone</fields>
+    <fields>MonthlyIncome__c</fields>
+    <label>CompactLayout NaturalPerson</label>
+</CompactLayout>

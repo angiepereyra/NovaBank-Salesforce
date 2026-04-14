@@ -2,6 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Natural_Person</fullName>
     <active>true</active>
+    <compactLayoutAssignment>CompactLayout_NaturalPerson</compactLayoutAssignment>
     <label>Natural Person</label>
     <picklistValues>
         <picklist>AccountSource</picklist>

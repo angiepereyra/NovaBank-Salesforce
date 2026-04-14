@@ -3,6 +3,7 @@
     <fullName>Case_Natural_Person</fullName>
     <active>true</active>
     <businessProcess>Support Natural Person Process</businessProcess>
+    <compactLayoutAssignment>CompactLayout_CaseNaturalPerson</compactLayoutAssignment>
     <label>Case Natural Person</label>
     <picklistValues>
         <picklist>CaseSubtype__c</picklist>

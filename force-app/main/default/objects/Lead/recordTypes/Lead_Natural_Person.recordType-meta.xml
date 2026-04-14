@@ -3,6 +3,7 @@
     <fullName>Lead_Natural_Person</fullName>
     <active>true</active>
     <businessProcess>Process Natural Person</businessProcess>
+    <compactLayoutAssignment>CompactLayout_LeadNaturalPerson</compactLayoutAssignment>
     <label>Lead Natural Person</label>
     <picklistValues>
         <picklist>GenderIdentity</picklist>

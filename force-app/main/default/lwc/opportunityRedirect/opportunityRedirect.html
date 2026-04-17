@@ -1,0 +1,36 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-15-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+<div class="slds-p-around_medium">
+ 
+        <!-- Spinner while converting -->
+<template if:true={isLoading}>
+<div class="slds-text-align_center">
+<lightning-spinner alternative-text="Converting lead..."
+                                   size="medium">
+</lightning-spinner>
+<p class="slds-m-top_medium slds-text-body_regular">
+                    Converting lead into opportunity...
+</p>
+</div>
+</template>
+ 
+        <!-- Error state -->
+<template if:true={hasError}>
+<div class="slds-box slds-theme_error slds-m-bottom_medium">
+<p><strong>Conversion failed</strong></p>
+<p>{errorMessage}</p>
+</div>
+<lightning-button label="Close"
+                              variant="brand"
+                              onclick={handleClose}>
+</lightning-button>
+</template>
+ 
+    </div>
+</template>

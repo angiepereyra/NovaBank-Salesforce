@@ -1,0 +1,41 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-16-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+        <lightning-card title="Process Management" icon-name="standard:process">
+        <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Processing..." size="small"></lightning-spinner>
+        </template>
+ 
+<div class="slds-p-around_medium">
+        <p class="slds-text-body_regular slds-m-bottom_medium slds-text-color_weak">
+                Start a new process for this customer:
+        </p>
+ 
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                        <lightning-button label="Sale (new Lead)"
+                                      variant="brand"
+                                      icon-name="utility:money"
+                                      onclick={handleSale}
+                                      disabled={isLoading}
+                                      class="slds-size_1-of-1">
+                        </lightning-button>
+                </div>
+                <div class="slds-col">
+                        <lightning-button label="Claim (new Case)"
+                                      variant="destructive"
+                                      icon-name="utility:warning"
+                                      onclick={handleClaim}
+                                      disabled={isLoading}
+                                      class="slds-size_1-of-1">
+                        </lightning-button>
+                </div>
+        </div>
+</div>
+    </lightning-card>
+</template>

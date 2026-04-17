@@ -1,0 +1,92 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-16-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+        <div class="slds-p-around_medium">
+        <!-- Loading -->
+                <template if:true={isLoading}>
+                        <div class="slds-text-align_center slds-p-vertical_medium">
+                                <lightning-spinner alternative-text="Generating contract..."
+
+                                   size="medium">
+                                </lightning-spinner>
+                                <p class="slds-m-top_medium slds-text-body_regular">
+                                        Generating contract PDF, please wait...
+                                </p>
+                        </div>
+                </template>
+ 
+        <!-- Initial state: confirm generation -->
+                <template if:true={showInitial}>
+                        <div class="slds-box slds-theme_shade slds-m-bottom_medium">
+                                <p class="slds-text-body_regular">
+                                A PDF contract will be generated using the customer and product
+                                information of this opportunity. The document will be attached
+                                to the opportunity for further reference and signature.
+                                </p>
+                        </div>
+ 
+                        <div class="slds-text-align_right">
+                                <lightning-button label="Cancel"
+                                  variant="neutral"
+                                  onclick={handleClose}
+                                  class="slds-m-right_x-small">
+                                </lightning-button>
+                                <lightning-button label="Generate Contract"
+                                        variant="brand"
+                                        icon-name="utility:new_window"
+                                        onclick={handleGenerate}>
+                                </lightning-button>
+                        </div>
+                </template>
+ 
+        <!-- Success: contract generated -->
+                <template if:true={hasGenerated}>
+                        <div class="slds-notify slds-notify_alert slds-theme_success slds-m-bottom_medium"
+
+                 role="alert">
+<span class="slds-assistive-text">success</span>
+<h2>
+
+                    ✓ Contract generated successfully and attached to the opportunity.
+</h2>
+                        </div>
+ 
+                        <div class="slds-text-align_right">
+                                <lightning-button label="Cerrar"
+                                        variant="neutral"
+                                        onclick={handleClose}
+                                        class="slds-m-right_x-small">
+                                </lightning-button>
+                                <lightning-button label="Refrescar"
+                                        variant="brand"
+                                        icon-name="utility:preview"
+                                        onclick={handleViewDocument}>
+                                </lightning-button>
+                        </div>
+                </template>
+ 
+        <!-- Error -->
+                <template if:true={hasError}>
+                        <div class="slds-notify slds-notify_alert slds-theme_error slds-m-bottom_medium"
+                        role="alert">
+                                <h2>
+                                        <strong>Generation failed</strong>
+                                </h2>
+                                <p class="slds-m-top_x-small">{errorMessage}</p>
+                        </div>
+                        <div class="slds-text-align_right">
+                                <lightning-button label="Close"
+                                        variant="brand"
+                                        onclick={handleClose}>
+                                </lightning-button>
+                        </div>
+                </template>
+ 
+        </div>
+</template>
+ 

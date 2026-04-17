@@ -1,0 +1,37 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-16-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<aura:component controller="BenefitController" 
+                implements="flexipage:availableForRecordHome,force:hasRecordId">
+                <aura:attribute name="recordId" type="Id"/>
+<aura:attribute name="benefits" type="List"/>
+<aura:attribute name="columns" type="List"/>
+<aura:attribute name="isLoading" type="Boolean" default="false"/>
+ 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+ 
+    <lightning:card title="Catálogo de Beneficios NovaBank" iconName="standard:reward">
+<aura:set attribute="actions">
+<!--<lightning:buttonIcon iconName="utility:refresh" onclick="{!c.doInit}" alternativeText="Recargar" />-->
+</aura:set>
+ 
+        <div class="slds-p-around_small">
+<aura:if isTrue="{!v.isLoading}">
+<lightning:spinner alternativeText="Cargando..." size="medium" />
+</aura:if>
+ 
+            <div style="height: 400px">
+<lightning:datatable
+                    keyField="Id"
+                    data="{!v.benefits}"
+                    columns="{!v.columns}"
+                    hideCheckboxColumn="true"
+                    sortedBy="Priority__c"/>
+</div>
+</div>
+</lightning:card>
+</aura:component>

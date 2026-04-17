@@ -8,7 +8,48 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
+        <controllingField>CaseType__c</controllingField>
         <restricted>true</restricted>
         <valueSetName>Case_Subtype</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Double Charge</controllingFieldValue>
+            <valueName>National Duplicate Charge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Double Charge</controllingFieldValue>
+            <valueName>International Duplicate Charge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Membership Fee</controllingFieldValue>
+            <valueName>Annual Membership Fee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Membership Fee</controllingFieldValue>
+            <valueName>Undisclosed Membership Fee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unrecognized Charge</controllingFieldValue>
+            <valueName>In-person Purchase</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unrecognized Charge</controllingFieldValue>
+            <valueName>Online Purchase</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing Error</controllingFieldValue>
+            <valueName>Incorrect Interest Calculation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing Error</controllingFieldValue>
+            <valueName>Incorrect Administrative Fee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other Claims</controllingFieldValue>
+            <valueName>Card Block</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other Claims</controllingFieldValue>
+            <valueName>Pending Reversal</valueName>
+        </valueSettings>
     </valueSet>
 </CustomField>

@@ -1,0 +1,259 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-16-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+
+<apex:page standardController="Opportunity"
+           extensions="ContractGeneratorController"
+           renderAs="pdf"
+           showHeader="false"
+           sidebar="false"
+           applyHtmlTag="false"
+           applyBodyTag="false">
+    <html>
+        <head>
+            <style type="text/css">
+
+                @page {
+                    size: A4;
+                    margin: 2.5cm;
+                }
+                body {
+                    font-family: 'Helvetica Neue', Arial, sans-serif;
+                    font-size: 11pt;
+                    color: #333333;
+                    line-height: 1.6;
+                }
+                .header {
+                    text-align: center;
+                    border-bottom: 3px solid #003366;
+                    padding-bottom: 15px;
+                    margin-bottom: 30px;
+                }
+                .header h1 {
+                    color: #003366;
+                    font-size: 18pt;
+                    margin: 0;
+                }
+
+                .header p {
+                    color: #666;
+                    font-size: 9pt;
+                    margin: 5px 0 0 0;
+                }
+
+                .contract-number {
+                    text-align: right;
+                    font-size: 9pt;
+                    color: #999;
+                    margin-bottom: 20px;
+                }
+
+                .section-title {
+                    background-color: #003366;
+                    color: white;
+                    padding: 6px 12px;
+                    font-size: 11pt;
+                    font-weight: bold;
+                    margin: 20px 0 10px 0;
+                }
+
+                table.detail {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-bottom: 15px;
+                }
+
+                table.detail td {
+                    padding: 6px 10px;
+                    border-bottom: 1px solid #eee;
+                    font-size: 10pt;
+                }
+
+                table.detail td.label {
+                    width: 40%;
+                    font-weight: bold;
+                    color: #555;
+                }
+
+                table.detail td.value {
+                    width: 60%;
+                }
+
+                .clause {
+                    margin: 10px 0;
+                    text-align: justify;
+                    font-size: 10pt;
+
+                }
+
+                .clause strong {
+                    color: #003366;
+                }
+
+                .signatures {
+                    margin-top: 60px;
+                    page-break-inside: avoid;
+                }
+
+                .signatures table {
+                    width: 100%;
+                }
+
+                .signatures td {
+                    width: 45%;
+                    text-align: center;
+                    padding-top: 60px;
+                    border-top: 1px solid #333;
+                    font-size: 10pt;
+                }
+
+                .footer {
+                    position: fixed;
+                    bottom: 0;
+                    width: 100%;
+                    text-align: center;
+                    font-size: 8pt;
+                    color: #999;
+                    border-top: 1px solid #ddd;
+                    padding-top: 5px;
+                }
+            </style>
+        </head>
+        <body>
+ 
+    <!-- Header -->
+            <div class="header">
+                <h1>NOVABANK</h1>
+                <p>Credit Card Contract</p>
+            </div>
+ 
+            <div class="contract-number">
+                Contract Nro: {!Opportunity.Id}
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                Date: <apex:outputText value="{0,date,dd/MM/yyyy}">
+                <apex:param value="{!TODAY()}" />
+                </apex:outputText>
+            </div>
+ 
+    <!-- Section 1: Customer Information -->
+            <div class="section-title">1. CUSTOMER INFORMATION</div>
+                <table class="detail">
+                    <tr>
+                        <td class="label">Full Name</td>
+                        <td class="value">{!Opportunity.Account.Name}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">National ID (DNI)</td>
+                        <td class="value">{!Opportunity.Account.NationalId__c}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Risk Profile</td>
+                        <td class="value">{!Opportunity.Account.RiskProfile__c}</td>
+                    </tr>
+                </table>
+ 
+    <!-- Section 2: Product Details -->
+                <div class="section-title">2. CREDIT CARD DETAILS</div>
+                    <table class="detail">
+                        <tr>
+                            <td class="label">Product</td>
+                            <td class="value">{!Opportunity.Name}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Approved Credit Line</td>
+                            <td class="value">  
+                                S/ <apex:outputText value="{0,number,###,##0.00}">
+                                    <apex:param value="{!Opportunity.CreditLine__c}" />
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Requested Credit Line</td>
+                            <td class="value">
+                                S/ <apex:outputText value="{0,number,###,##0.00}">
+                                    <apex:param value="{!Opportunity.CreditLine__c}" />
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Payment Date</td>
+                            <td class="value">
+                                <apex:outputText value="{0,date,dd/MM/yyyy}">
+                                    <apex:param value="{!Opportunity.PaymentDate__c}" />
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">ATM Withdrawal</td>
+                            <td class="value">
+                                        {!IF(Opportunity.AtmWithdrawalEnabled__c, "Enabled", "Disabled")}
+                            </td>
+                        </tr>
+
+                    </table>
+ 
+    <!-- Section 3: Terms and Conditions -->
+                    <div class="section-title">3. TERMS AND CONDITIONS</div>
+                    <p class="clause">
+                        <strong>FIRST:</strong> NovaBank hereby grants the CUSTOMER a credit card
+                        under the conditions specified in this contract. The approved credit line is
+                        S/ <apex:outputText value="{0,number,###,##0.00}">
+                            <apex:param value="{!Opportunity.Amount}" />
+                        </apex:outputText>,
+                        subject to periodic review by the bank.
+                    </p>
+ 
+                    <p class="clause">
+                        <strong>SECOND:</strong> The CUSTOMER agrees to make payments on or before
+                        the designated payment date each month. Late payments will incur interest
+                        charges as per the bank's published rates.
+                    </p>
+ 
+                    <p class="clause">
+                        <strong>THIRD:</strong> The CUSTOMER may request credit line increases
+                            subject to credit evaluation and approval by the bank's risk department.
+                    </p>
+ 
+                    <p class="clause">
+                        <strong>FOURTH:</strong> NovaBank reserves the right to block or cancel
+                            the credit card in case of fraud, default, or violation of these terms.
+                    </p>
+ 
+                    <p class="clause">
+                        <strong>FIFTH:</strong> This contract is governed by the laws and
+                            regulations of the Republic of Peru and the applicable SBS guidelines.
+                    </p>
+ 
+    <!-- Section 4: Signatures -->
+                    <div class="signatures">
+                        <table>
+                            <tr>
+                                <td>
+                                    {!Opportunity.Account.Name}<br/>
+                                    DNI: {!Opportunity.Account.NationalId__c}<br/>
+                                    <em>Customer</em>
+                                </td>
+                                    <td>&nbsp;</td>
+                                <td>
+                                {!Opportunity.Owner.Name}<br/>
+                                NovaBank<br/>
+                                <em>Executive</em>
+                                </td>
+                                    </tr>
+                                        </table>
+                    </div>
+ 
+    <!-- Footer -->
+                    <div class="footer">
+                        NovaBank S.A. &mdash; This document is confidential and for authorized use only.
+                    </div>
+ 
+        </body>
+    </html>
+</apex:page>
+ 
